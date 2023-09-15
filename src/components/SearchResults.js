@@ -1,8 +1,9 @@
 // SearchResults Component
 import React from "react";
+import PropTypes from "prop-types";
 
 const SearchResults = ({
-  data,
+  data = [],
   selectLocation,
 }) => {
   return (
@@ -12,6 +13,9 @@ const SearchResults = ({
           <div
             key={ele.id}
             className="search-option"
+            onClick={() =>
+              selectLocation(ele)
+            }
           >
             {ele.name}
           </div>
@@ -19,6 +23,16 @@ const SearchResults = ({
       })}
     </div>
   );
+};
+
+SearchResults.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    })
+  ),
+  selectLocation: PropTypes.func,
 };
 
 export default SearchResults;

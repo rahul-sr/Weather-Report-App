@@ -1,5 +1,6 @@
 // SetUnits Component
 import React from "react";
+import PropTypes from "prop-types";
 
 const SetUnits = ({ value, onSet }) => {
   return (
@@ -9,11 +10,20 @@ const SetUnits = ({ value, onSet }) => {
         onChange={onSet}
         value={value}
       >
-        <option>Celsius</option>
-        <option>Fahrenheit</option>
+        <option value="C">
+          Celsius
+        </option>
+        <option value="F">
+          Fahrenheit
+        </option>
       </select>
     </div>
   );
+};
+
+SetUnits.propTypes = {
+  value: PropTypes.string,
+  onSet: PropTypes.func,
 };
 
 export default SetUnits;
